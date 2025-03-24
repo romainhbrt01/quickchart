@@ -1,4 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 name: Build and deploy Node.js app to Azure Web App - QRcodegeneratorPOC
 
 on:
@@ -20,6 +19,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 
       - name: npm install, build, and test
         env:
@@ -71,4 +75,3 @@ jobs:
           app-name: 'QRcodegeneratorPOC'
           slot-name: 'Production'
           package: .
-          
