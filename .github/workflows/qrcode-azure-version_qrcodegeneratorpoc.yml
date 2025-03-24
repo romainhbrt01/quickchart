@@ -25,15 +25,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 
-      - name: Update npm
-        run: npm install -g npm@8.19.4
-
       - name: npm install and build
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
         run: |
           npm install --legacy-peer-deps
-          npm install canvas@2.9.0 --legacy-peer-deps
           npm run build --if-present
           npm run test --if-present
 
@@ -79,3 +75,4 @@ jobs:
           app-name: 'QRcodegeneratorPOC'
           slot-name: 'Production'
           package: .
+
